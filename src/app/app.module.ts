@@ -11,15 +11,26 @@ import { MatToolbarModule,
   MatIconModule,
   MatCardModule,
   MatButtonModule,
-  MatProgressSpinnerModule } from '@angular/material';
+  MatProgressSpinnerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatMenuModule} from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { NewStaffComponent } from './new-staff/new-staff.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    NewStaffComponent,
+    AppNavbarComponent,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +41,14 @@ import { environment } from '../environments/environment';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
     MatProgressSpinnerModule,
+    MatInputModule,
+    MatMenuModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

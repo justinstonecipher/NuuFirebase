@@ -1,0 +1,21 @@
+.componentPageHeader {
+  display: flex;
+  align-items: center;
+}
+
+.primaryHeader {
+  background: #3f51b5;
+
+}
+
+.headerText {
+  font-weight: 300;
+  margin: 0;
+  padding: 28px 8px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.headerContainer {
+  margin-left: 10%;
+}

@@ -15,7 +15,8 @@ export class FirebaseService {
       name: value.name,
       surname: value.surname,
       title: value.title,
-      email: value.email
+      email: value.email,
+      imagePath: value.imagePath,
     });
   }
 
@@ -35,11 +36,11 @@ export class FirebaseService {
     });
   }
 
-  getStaff(){
+  getStaff() {
     return new Promise<any>((resolve, reject) => {
-      this.db.collection('/people').snapshotChanges()
+      this.db.collection('/staff').snapshotChanges()
       .subscribe(snapshots => {
-        resolve(snapshots)
+        resolve(snapshots);
       });
     });
   }
