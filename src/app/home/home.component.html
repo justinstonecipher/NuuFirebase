@@ -29,15 +29,13 @@
     <mat-card class="nuuIntroCard">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>About Us</mat-card-title>
-        <mat-card-subtitle>See what we are about here at NUU!</mat-card-subtitle>
+        <mat-card-title>Upcoming Events</mat-card-title>
+        <mat-card-subtitle>Check to see the most current events and activities!</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>
-          Tucked away in beautiful Cache Valley, Northern Utah United is Cache Valley's competitive soccer club. We
-          welcome
-          all ages to come play, and learn the best sport in the world!
-        </p>
+        <mat-list *ngFor="let event of events">
+          <mat-list-item><button mat-button routerLink="/{{event.payload.doc.data().routerLink}}">{{event.payload.doc.data().name}}</button></mat-list-item>
+        </mat-list>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button routerLink="/about">Learn More</button>
@@ -47,14 +45,13 @@
     <mat-card class="nuuIntroCard">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>About Us</mat-card-title>
-        <mat-card-subtitle>See what we are about here at NUU!</mat-card-subtitle>
+        <mat-card-title>NUU Events</mat-card-title>
+        <mat-card-subtitle>Celebrate with us!</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p>
-          Tucked away in beautiful Cache Valley, Northern Utah United is Cache Valley's competitive soccer club. We
-          welcome
-          all ages to come play, and learn the best sport in the world!
+          NUU celebrations are always the best part of any tournament! we provide family friendly events for all ages to
+          come enjoy.
         </p>
       </mat-card-content>
       <mat-card-actions>
@@ -62,4 +59,34 @@
       </mat-card-actions>
     </mat-card>
   </div>
+  <div class="divider">
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="h2">Navigate Northern Utah United</div>
+
+  <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile> Resources</mat-grid-tile>
+      <mat-grid-tile>Events</mat-grid-tile>
+      <mat-grid-tile>Leagues &amp; Programs</mat-grid-tile>
+      <mat-grid-tile>Recreation</mat-grid-tile>
+      <mat-grid-tile>Tournaments</mat-grid-tile>
+      <mat-grid-tile>About Us &amp; Affiliated Teams</mat-grid-tile>
+    </mat-grid-list>
+
+  <div class="divider">
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="h2">Our Purpose</div>
+  <mat-list>
+    <mat-list-item> Provide youth of all ages a way to continue to grow their love for soccer. </mat-list-item>
+    <mat-list-item> Have the greatest competitive leagues and tournaments in northern Utah. </mat-list-item>
+    <mat-list-item> Keep everyone entertained with events for everyone in the family! </mat-list-item>
+    <mat-list-item> Ensure all youth have a fun time in our recreation leagues. </mat-list-item>
+    <mat-list-item> Help our youth learn to work as a team and gain leadership skills while they are young.
+    </mat-list-item>
+  </mat-list>
+  <div>The most important part of Northern Utah United is to provide a wholesome experience for everyone, and ensure
+    that everyone can gain experience.</div>
 </div>

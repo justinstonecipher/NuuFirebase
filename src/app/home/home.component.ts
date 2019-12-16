@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+events: Array<any>;
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    const today = new Date();
+    this.firebaseService.getEvents(today).then(results => {
+      this.events = results;
+    })
   }
 
 }

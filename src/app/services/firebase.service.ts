@@ -20,6 +20,42 @@ export class FirebaseService {
     });
   }
 
+  createEvent(value) {
+    return this.db.collection('events').add({
+      name: value.name,
+      description: value.description,
+      routerLink: value.routerLink,
+      expirationDate: value.expirationDate,
+    });
+  }
+
+//   const productsRef = db.collection('products');
+
+// const query  = productsRef.where('price', '>=', 23)
+
+// query.onSnapshot(products => {
+
+//   products.forEach(doc => {
+//       const data = doc.data();
+//   })
+
+// });
+
+  getEvents(date: Date) {
+    // const eventsRef = db.collection('events');
+    // const query = eventsRef.where('expirationDate', '>=', date);
+    // return new Promise<any>(resolve => {
+    //   query.snapshotChanges().subscribe(snapshots => {
+    //     resolve(snapshots);
+    //   });
+    // });
+    return new Promise<any>(resolve => {
+      this.db.collection('/events', ref => ref.where('expirationDate', '>=', date)).snapshotChanges().subscribe(snapshots => {
+        resolve(snapshots);
+      });
+    });
+  }
+
   addTeam(value) {
     return this.db.collection('teams').add({
       name: value.name,
@@ -39,17 +75,17 @@ export class FirebaseService {
   getStaff() {
     return new Promise<any>((resolve, reject) => {
       this.db.collection('/staff').snapshotChanges()
-      .subscribe(snapshots => {
-        resolve(snapshots);
-      });
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        });
     });
   }
 
-  updateStaff(userKey, value){
+  updateStaff(userKey, value) {
     return this.db.collection('staff').doc(userKey).set(value);
   }
 
-  deleteStaff(userKey){
+  deleteStaff(userKey) {
     return this.db.collection('staff').doc(userKey).delete();
   }
 }

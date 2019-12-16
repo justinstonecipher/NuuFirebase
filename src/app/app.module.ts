@@ -14,23 +14,30 @@ import { MatToolbarModule,
   MatProgressSpinnerModule,
   MatFormFieldModule,
   MatInputModule,
-  MatMenuModule} from '@angular/material';
+  MatMenuModule,
+  MatListModule,
+  MatDividerModule,
+  MatGridListModule,
+  MatDatepickerModule,
+  MatNativeDateModule} from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
-import { NewStaffComponent } from './new-staff/new-staff.component';
+import { AdminComponent } from './admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    NewStaffComponent,
+    AdminComponent,
     AppNavbarComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,12 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     MatProgressSpinnerModule,
     MatInputModule,
     MatMenuModule,
+    MatListModule,
+    MatDividerModule,
     ReactiveFormsModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
