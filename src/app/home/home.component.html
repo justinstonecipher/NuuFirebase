@@ -34,7 +34,8 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list *ngFor="let event of events">
-          <mat-list-item><button mat-button routerLink="/{{event.payload.doc.data().routerLink}}">{{event.payload.doc.data().name}}</button></mat-list-item>
+          <mat-list-item><a routerLink="/{{event.payload.doc.data().routerLink}}">{{event.payload.doc.data().name}}</a>
+          </mat-list-item>
         </mat-list>
       </mat-card-content>
       <mat-card-actions>
@@ -66,13 +67,13 @@
   <div class="h2">Navigate Northern Utah United</div>
 
   <mat-grid-list cols="3" rowHeight="2:1">
-      <mat-grid-tile> Resources</mat-grid-tile>
-      <mat-grid-tile>Events</mat-grid-tile>
-      <mat-grid-tile>Leagues &amp; Programs</mat-grid-tile>
-      <mat-grid-tile>Recreation</mat-grid-tile>
-      <mat-grid-tile>Tournaments</mat-grid-tile>
-      <mat-grid-tile>About Us &amp; Affiliated Teams</mat-grid-tile>
-    </mat-grid-list>
+    <mat-grid-tile> Resources</mat-grid-tile>
+    <mat-grid-tile>Events</mat-grid-tile>
+    <mat-grid-tile>Leagues &amp; Programs</mat-grid-tile>
+    <mat-grid-tile>Recreation</mat-grid-tile>
+    <mat-grid-tile>Tournaments</mat-grid-tile>
+    <mat-grid-tile>About Us &amp; Affiliated Teams</mat-grid-tile>
+  </mat-grid-list>
 
   <div class="divider">
     <mat-divider></mat-divider>
@@ -87,6 +88,20 @@
     <mat-list-item> Help our youth learn to work as a team and gain leadership skills while they are young.
     </mat-list-item>
   </mat-list>
-  <div>The most important part of Northern Utah United is to provide a wholesome experience for everyone, and ensure
-    that everyone can gain experience.</div>
+  <p>The most important part of Northern Utah United is to provide a wholesome experience for everyone, and ensure
+    that everyone can gain experience.</p>
+
+  <div class="divider">
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="contactUs">
+    <div class="contactText">
+      We are always looking for volunteers here at Northern Utah United. If you, or anyone you know, wishes to
+      volunteer with us, please contact us.
+    </div>
+    <div>
+      <button mat-raised-button>Contact Us</button>
+    </div>
+  </div>
 </div>

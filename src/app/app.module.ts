@@ -19,7 +19,9 @@ import { MatToolbarModule,
   MatDividerModule,
   MatGridListModule,
   MatDatepickerModule,
-  MatNativeDateModule} from '@angular/material';
+  MatNativeDateModule,
+  MatSidenavModule,
+  MatExpansionModule} from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -29,6 +31,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { EventsComponent } from './events/events.component';
+import { UpcomingEventsComponent } from './events/upcoming-events/upcoming-events.component';
+import { CacheValleyCupComponent } from './events/cache-valley-cup/cache-valley-cup.component';
+import { MiniCupComponent } from './events/mini-cup/mini-cup.component';
+import { ExpoComponent } from './events/expo/expo.component';
+import { AgmComponent } from './events/agm/agm.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +46,13 @@ import { FooterComponent } from './footer/footer.component';
     AdminComponent,
     AppNavbarComponent,
     PageHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EventsComponent,
+    UpcomingEventsComponent,
+    CacheValleyCupComponent,
+    MiniCupComponent,
+    ExpoComponent,
+    AgmComponent
   ],
   imports: [
     BrowserModule,
@@ -58,11 +73,15 @@ import { FooterComponent } from './footer/footer.component';
     MatGridListModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSidenavModule,
+    MatExpansionModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

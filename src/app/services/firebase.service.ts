@@ -29,18 +29,6 @@ export class FirebaseService {
     });
   }
 
-//   const productsRef = db.collection('products');
-
-// const query  = productsRef.where('price', '>=', 23)
-
-// query.onSnapshot(products => {
-
-//   products.forEach(doc => {
-//       const data = doc.data();
-//   })
-
-// });
-
   getEvents(date: Date) {
     // const eventsRef = db.collection('events');
     // const query = eventsRef.where('expirationDate', '>=', date);
@@ -50,7 +38,7 @@ export class FirebaseService {
     //   });
     // });
     return new Promise<any>(resolve => {
-      this.db.collection('/events', ref => ref.where('expirationDate', '>=', date)).snapshotChanges().subscribe(snapshots => {
+      this.db.collection('/events', ref => ref.where('expirationDate', '>', date)).snapshotChanges().subscribe(snapshots => {
         resolve(snapshots);
       });
     });

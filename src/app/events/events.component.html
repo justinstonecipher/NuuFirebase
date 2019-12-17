@@ -1,0 +1,15 @@
+<app-page-header pageName="NUU Events" class="header"></app-page-header>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <mat-nav-list>
+            <a mat-list-item routerLink='upcoming'>Upcoming Events</a>
+            <a mat-list-item routerLink='cacheValleyCup'>Cache Valley Cup</a>
+            <a mat-list-item routerLink='cacheMiniCup'>Cache Valley Mini Cup</a>
+            <a mat-list-item routerLink='expo'>CVC Soccer Expo</a>
+            <a mat-list-item routerLink='agm'>NUU Annual General Meeting</a>
+          </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
