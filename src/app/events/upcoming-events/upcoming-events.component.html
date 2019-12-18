@@ -1,21 +1,28 @@
 <div class="headerContainer">
     <h1 class="headerText">Upcoming Events</h1>
 </div>
-<mat-accordion *ngFor="let event of events">
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{event.payload.doc.data().name}}
-            </mat-panel-title>
-            <mat-panel-description class="date">
-                Event Date: {{event.payload.doc.data().expirationDate.seconds * 1000 | date:'MM-dd-yyyy'}}
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div>
-            {{event.payload.doc.data().description}}
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
+<div class="placeholderText">
+    Watch here for all upcoming tournaments, leagues, and activities! We are constantly improving our program and
+    finding ways to improve the soccer community in Cache Valley.
+</div>
+<div class="events">
+    <mat-accordion *ngFor="let event of events">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{event.payload.doc.data().name}}
+                </mat-panel-title>
+                <mat-panel-description class="date">
+                    Event Date: {{event.payload.doc.data().expirationDate.seconds * 1000 | date:'MM-dd-yyyy'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+                {{event.payload.doc.data().description}}
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
 <!-- <div *ngFor="let event of events">
     <div>{{event.payload.doc.data().name}}</div>
     <div>{{event.payload.doc.data().description}}</div>

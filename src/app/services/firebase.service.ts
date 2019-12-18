@@ -29,19 +29,28 @@ export class FirebaseService {
     });
   }
 
+  updateEvent(eventKey, value) {
+    return this.db.collection('events').doc(eventKey).set(value);
+  }
+
+  deleteEvent(eventKey) {
+    return this.db.collection('events').doc(eventKey).delete();
+  }
+
   getEvents(date: Date) {
-    // const eventsRef = db.collection('events');
-    // const query = eventsRef.where('expirationDate', '>=', date);
-    // return new Promise<any>(resolve => {
-    //   query.snapshotChanges().subscribe(snapshots => {
-    //     resolve(snapshots);
-    //   });
-    // });
     return new Promise<any>(resolve => {
       this.db.collection('/events', ref => ref.where('expirationDate', '>', date)).snapshotChanges().subscribe(snapshots => {
         resolve(snapshots);
       });
     });
+  }
+
+  getAllEvents() {
+    return new Promise<any>(resolve => {
+      this.db.collection('/events').snapshotChanges().subscribe(snapshots => {
+        resolve(snapshots);
+      })
+    })
   }
 
   addTeam(value) {

@@ -9,6 +9,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class UpcomingEventsComponent implements OnInit {
 
   constructor(private firebaseService: FirebaseService) { }
+  panelOpenState = false;
   events: Array<any>;
 
   ngOnInit() {

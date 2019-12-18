@@ -1,3 +1,81 @@
 <div class="headerContainer">
     <h1 class="headerText">Cache Valley Cup</h1>
 </div>
+<div class="cupInfo">
+    <mat-horizontal-stepper [linear]="false" #stepper>
+        <mat-step>
+            <ng-template matStepLabel>Cup Info</ng-template>
+            <div>need to add dynamic dates and times</div>
+            <p>
+                Mark your calendars and plan to join us on July 10th - July 13th for the 15th Annual Cache Valley Cup
+                Soccer Tournament, sponsored by Northern Utah United youth soccer. Join the tradition of excellence and
+                fun that the Cache Valley Cup is known for.
+            </p>
+            <p>
+                Play your guaranteed three games against teams from the 'Intermountain West' on fields adjacent to the
+                Cache National Forest in the shadow of the Bear River Range of the Wasatch Mountains.
+            </p>
+            <p>
+                Come and join us for our Friday night festivities. Starting at 5pm at Green Canyon HS – 2960 North
+                Wolfpack Way, In North Logan. we will have free Pizza and drinks for all Coaches and Players ($3 a plate
+                for Parents and Siblings). Come enjoy a fun, relaxed atmosphere with your teams, players, and their
+                families; a soccer carnival with skills competitions, and top of the evening with our spectacular JV and
+                Varsity Coach vs. Referee games, starting at 7:00pm and 8:30pm respectively.
+            </p>
+            <p>
+                Championship games will be held on Saturday, July 13th. Location of awards ceremonies to be announced
+            </p>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Registration</ng-template>
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Schedules</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Fields/Venues</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Carnival</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Rules &amp; Regulations</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Directions &amp; Hotel Info</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

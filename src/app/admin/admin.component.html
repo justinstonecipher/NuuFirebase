@@ -1,3 +1,4 @@
+<app-page-header pageName="NUU Admin"></app-page-header>
 <div>
   <mat-list role="list" *ngFor="let s of staff">
     <mat-list-item role="listitem">{{s.payload.doc.data().name}} {{s.payload.doc.data().surname}}</mat-list-item>
@@ -35,44 +36,23 @@
         [disabled]="!newStaffForm.valid">Create</button>
     </div>
   </div>
-
 </form>
 
-<form class="create-form" [formGroup]="newUpcomingEventForm" novalidate
-  (ngSubmit)="onSubmitEvent(newUpcomingEventForm.value)">
-  <h2>Add Event</h2>
-  <div class="form-group">
-    <mat-form-field class="input-style">
-      <input matInput placeholder="Event Name" class="form-control" formControlName="name">
-    </mat-form-field>
+<h2>NUU Events</h2>
+<!--turn this into a mat table instead of a list to make it cleaner-->
+<div>
+  <mat-list role="list" *ngFor="let event of events">
+    <mat-list-item role="listitem">{{event.payload.doc.data().name}}
+      {{event.payload.doc.data().expirationDate?.seconds * 1000 | date:'MM-dd-yyyy'}}
+      <button mat-button (click)="addOrEditEvent(event)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-button (click)="deleteEvent(event)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+  <div>
+      <button mat-raised-button class="submit-button" color="primary" (click)="addOrEditEvent(null)">Create Event</button>
   </div>
-
-  <div class="form-group">
-    <mat-form-field class="input-style">
-      <textarea matInput placeholder="Event Description" class="form-control" formControlName="description"></textarea>
-    </mat-form-field>
-  </div>
-
-  <div class="form-group">
-    <mat-form-field class="input-style">
-      <input matInput placeholder="Event URL" class="form-control" formControlName="routerLink">
-    </mat-form-field>
-  </div>
-
-  <div class="form-group">
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Expiration Date" class="form-control" formControlName="expirationDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div>
-
-
-  <div class="row submit-button-container">
-    <div class="col-md-4">
-      <button mat-raised-button class="submit-button" color="primary" type="submit"
-        [disabled]="!newUpcomingEventForm.valid">Create</button>
-    </div>
-  </div>
-
-</form>
+</div>

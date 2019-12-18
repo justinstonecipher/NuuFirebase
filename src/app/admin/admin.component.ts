@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { AddEditEventComponent } from './add-edit-event/add-edit-event.component';
 
 @Component({
   selector: 'app-admin',
@@ -10,14 +12,19 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private firebaseService: FirebaseService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private firebaseService: FirebaseService, private router: Router, private formBuilder: FormBuilder, public dialog: MatDialog) { }
   newStaffForm: FormGroup;
-  newUpcomingEventForm: FormGroup;
+  // newUpcomingEventForm: FormGroup;
   staff: Array<any>;
+  events: Array<any>;
+
   ngOnInit() {
     this.firebaseService.getStaff().then(results => {
       this.staff = results;
     });
+
+    this.getAllEvents();
+    
     this.newStaffForm = this.formBuilder.group({
       name: this.formBuilder.control('', Validators.required),
       surname: this.formBuilder.control('', Validators.required),
@@ -25,12 +32,34 @@ export class AdminComponent implements OnInit {
       email: this.formBuilder.control('', Validators.required),
     });
 
-    this.newUpcomingEventForm = this.formBuilder.group({
-      name: this.formBuilder.control('', Validators.required),
-      description: this.formBuilder.control('', Validators.required),
-      routerLink: this.formBuilder.control('', Validators.required),
-      expirationDate: this.formBuilder.control('', [Validators.required])
-    });
+    // this.newUpcomingEventForm = this.formBuilder.group({
+    //   name: this.formBuilder.control('', Validators.required),
+    //   description: this.formBuilder.control('', Validators.required),
+    //   routerLink: this.formBuilder.control('', Validators.required),
+    //   expirationDate: this.formBuilder.control('', [Validators.required])
+    // });
+  }
+
+  async addOrEditEvent(event) {
+    let eventForModal: any = {};
+    
+    if (event === null) {
+      eventForModal = {};
+    } else {
+      console.log(event.payload.doc);
+      console.log(event.payload.doc.id);
+      eventForModal.id = event.payload.doc.id
+      eventForModal.name = event.payload.doc.data().name;
+      eventForModal.description = event.payload.doc.data().description;
+      eventForModal.routerLink = event.payload.doc.data().routerLink;
+
+      if (event.payload.doc.data().expirationDate) {
+        eventForModal.expirationDate = new Date(event.payload.doc.data().expirationDate.seconds * 1000);
+      }
+    }
+    
+    await AddEditEventComponent.open(this.dialog, eventForModal);
+    this.getAllEvents();
   }
 
   onSubmit(value) {
@@ -43,9 +72,15 @@ export class AdminComponent implements OnInit {
       );
   }
 
-  onSubmitEvent(value) {
-    this.firebaseService.createEvent(value).then(res => {
-      this.newUpcomingEventForm.reset();
+  getAllEvents() {
+    this.firebaseService.getAllEvents().then(results => {
+      this.events = results;
+    });
+  }
+   
+  deleteEvent(event) {
+    this.firebaseService.deleteEvent(event.payload.doc.id).then(res => {
+      this.getAllEvents();
     });
   }
 }

@@ -21,12 +21,14 @@ import { MatToolbarModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatSidenavModule,
-  MatExpansionModule} from '@angular/material';
+  MatExpansionModule,
+  MatStepperModule,
+  MatDialogModule} from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
@@ -38,6 +40,7 @@ import { CacheValleyCupComponent } from './events/cache-valley-cup/cache-valley-
 import { MiniCupComponent } from './events/mini-cup/mini-cup.component';
 import { ExpoComponent } from './events/expo/expo.component';
 import { AgmComponent } from './events/agm/agm.component';
+import { AddEditEventComponent } from './admin/add-edit-event/add-edit-event.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +55,8 @@ import { AgmComponent } from './events/agm/agm.component';
     CacheValleyCupComponent,
     MiniCupComponent,
     ExpoComponent,
-    AgmComponent
+    AgmComponent,
+    AddEditEventComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +79,9 @@ import { AgmComponent } from './events/agm/agm.component';
     MatNativeDateModule,
     MatSidenavModule,
     MatExpansionModule,
+    MatStepperModule,
+    MatDialogModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -82,6 +89,7 @@ import { AgmComponent } from './events/agm/agm.component';
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddEditEventComponent]
 })
 export class AppModule { }

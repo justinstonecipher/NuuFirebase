@@ -17,7 +17,8 @@
   <span class="spacer"></span>
   <button mat-button routerLink="/about">Affinity Soccer</button>
   <div class="login">
-    <div class="userInfo" *ngIf="auth.user$ | async as user; else login">
+    <button mat-button routerLink="admin">Admin</button>
+    <!-- <div class="userInfo" *ngIf="auth.user$ | async as user; else login">
       <div class="userName">{{ user.displayName }}</div>
       <div class="logoutButton">
         <button mat-button class="button" (click)="auth.signOut()">Sign Out</button>
@@ -26,6 +27,6 @@
 
     <ng-template #login>
       <button mat-button class="button" (click)="auth.googleSignIn()">Admin Login</button>
-    </ng-template>
+    </ng-template> -->
   </div>
 </mat-toolbar>
