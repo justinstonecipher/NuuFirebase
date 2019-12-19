@@ -1,0 +1,15 @@
+<app-page-header pageName="NUU Challenger League" class="header"></app-page-header>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+        <mat-nav-list>
+            <a mat-list-item routerLink='schedules'>Schedules</a>
+            <a mat-list-item routerLink='registration'>Registration Info</a>
+            <a mat-list-item routerLink='results'>League Results</a>
+            <a mat-list-item routerLink='tryoutInfo'>Tryout Info</a>
+            <a mat-list-item routerLink='tryoutForm'>Tryout Ad Form</a>
+          </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

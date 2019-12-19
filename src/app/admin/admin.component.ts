@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { AddEditEventComponent } from './add-edit-event/add-edit-event.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,19 +13,31 @@ import { AddEditEventComponent } from './add-edit-event/add-edit-event.component
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private firebaseService: FirebaseService, private router: Router, private formBuilder: FormBuilder, public dialog: MatDialog) { }
+  constructor(private firebaseService: FirebaseService, private router: Router, private formBuilder: FormBuilder, public dialog: MatDialog, public auth: AuthService) { }
   newStaffForm: FormGroup;
   // newUpcomingEventForm: FormGroup;
   staff: Array<any>;
   events: Array<any>;
 
   ngOnInit() {
+    let admins
+    this.firebaseService.getAdminUsers().then(results => {
+      admins = results;
+      this.auth.user$.subscribe(r => {
+        if (r !== null && !r.isAdmin && !admins.find(x => x.uid === r.uid)) {
+          alert('user not authorized, talk to a site administrator to elevate privileges.');
+          this.router.navigate(['/home']);
+        }
+      });
+    })
+
+
     this.firebaseService.getStaff().then(results => {
       this.staff = results;
     });
 
     this.getAllEvents();
-    
+
     this.newStaffForm = this.formBuilder.group({
       name: this.formBuilder.control('', Validators.required),
       surname: this.formBuilder.control('', Validators.required),
@@ -42,7 +55,7 @@ export class AdminComponent implements OnInit {
 
   async addOrEditEvent(event) {
     let eventForModal: any = {};
-    
+
     if (event === null) {
       eventForModal = {};
     } else {
@@ -57,7 +70,7 @@ export class AdminComponent implements OnInit {
         eventForModal.expirationDate = new Date(event.payload.doc.data().expirationDate.seconds * 1000);
       }
     }
-    
+
     await AddEditEventComponent.open(this.dialog, eventForModal);
     this.getAllEvents();
   }
@@ -77,7 +90,7 @@ export class AdminComponent implements OnInit {
       this.events = results;
     });
   }
-   
+
   deleteEvent(event) {
     this.firebaseService.deleteEvent(event.payload.doc.id).then(res => {
       this.getAllEvents();

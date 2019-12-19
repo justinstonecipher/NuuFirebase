@@ -41,6 +41,15 @@ import { MiniCupComponent } from './events/mini-cup/mini-cup.component';
 import { ExpoComponent } from './events/expo/expo.component';
 import { AgmComponent } from './events/agm/agm.component';
 import { AddEditEventComponent } from './admin/add-edit-event/add-edit-event.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
+import { ChallengerComponent } from './challenger/challenger.component';
+import { StateComponent } from './state/state.component';
+import { ChallengerSchedulesComponent } from './challenger/challenger-schedules/challenger-schedules.component';
+import { ChallengerRegistrationComponent } from './challenger/challenger-registration/challenger-registration.component';
+import { ChallengerResultsComponent } from './challenger/challenger-results/challenger-results.component';
+import { ChallengerTryoutInfoComponent } from './challenger/challenger-tryout-info/challenger-tryout-info.component';
+import { ChallengerTryoutFormComponent } from './challenger/challenger-tryout-form/challenger-tryout-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +65,15 @@ import { AddEditEventComponent } from './admin/add-edit-event/add-edit-event.com
     MiniCupComponent,
     ExpoComponent,
     AgmComponent,
-    AddEditEventComponent
+    AddEditEventComponent,
+    LoginComponent,
+    ChallengerComponent,
+    StateComponent,
+    ChallengerSchedulesComponent,
+    ChallengerRegistrationComponent,
+    ChallengerResultsComponent,
+    ChallengerTryoutInfoComponent,
+    ChallengerTryoutFormComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +104,8 @@ import { AddEditEventComponent } from './admin/add-edit-event/add-edit-event.com
     AngularFireAuthModule,
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    AuthGuard,
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
   ],
   bootstrap: [AppComponent],
   entryComponents: [AddEditEventComponent]

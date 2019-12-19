@@ -8,6 +8,14 @@ export class FirebaseService {
 
   constructor(public db: AngularFirestore) { }
 
+  getAdminUsers() {
+    return new Promise<any>(resolve => {
+      return this.db.collection('/users', ref => ref.where('isAdmin', '==', true)).snapshotChanges().subscribe(snapshots => {
+        resolve(snapshots);
+      })
+    })
+  }
+
   // add ability to upload image
   // add ability to upload documents/bylaws
   createStaff(value) {

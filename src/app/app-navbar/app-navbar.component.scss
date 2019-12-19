@@ -2,10 +2,6 @@
   flex: 1 1 auto;
 }
 
-.userInfo {
-  display: block;
-}
-
 .userName {
   font-size: small;
 }
@@ -19,4 +15,15 @@
   right: 0;
   left: 0;
   z-index: 2;
+}
+
+.userPhoto {
+  border-radius: 100px;
+  height: 35px;
+  width: 35px;
+}
+
+.logout {
+  font-size: 12px;
+  cursor: pointer;
 }

@@ -9,13 +9,22 @@ import { CacheValleyCupComponent } from './events/cache-valley-cup/cache-valley-
 import { MiniCupComponent } from './events/mini-cup/mini-cup.component';
 import { ExpoComponent } from './events/expo/expo.component';
 import { AgmComponent } from './events/agm/agm.component';
+import { AuthGuard } from './auth/auth.guard';
+import { LoginComponent } from './auth/login/login.component';
+import { ChallengerComponent } from './challenger/challenger.component';
+import { ChallengerSchedulesComponent } from './challenger/challenger-schedules/challenger-schedules.component';
+import { ChallengerRegistrationComponent } from './challenger/challenger-registration/challenger-registration.component';
+import { ChallengerTryoutInfoComponent } from './challenger/challenger-tryout-info/challenger-tryout-info.component';
+import { ChallengerResultsComponent } from './challenger/challenger-results/challenger-results.component';
+import { ChallengerTryoutFormComponent } from './challenger/challenger-tryout-form/challenger-tryout-form.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { 
     path: 'events',
     component: EventsComponent,
@@ -28,6 +37,18 @@ const routes: Routes = [
       { path: 'agm', component: AgmComponent }
     ]
   },
+  {
+    path: 'challenger',
+    component: ChallengerComponent,
+    children: [
+      { path: '', redirectTo: 'schedules', pathMatch: 'full' },
+      { path: 'schedules', component: ChallengerSchedulesComponent },
+      { path: 'registration', component: ChallengerRegistrationComponent },
+      { path: 'results', component: ChallengerResultsComponent },
+      { path: 'tryoutInfo', component: ChallengerTryoutInfoComponent },
+      { path: 'tryoutForm', component: ChallengerTryoutFormComponent },
+    ]
+  }
 ];
 
 @NgModule({
