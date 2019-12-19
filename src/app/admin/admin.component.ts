@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   // newUpcomingEventForm: FormGroup;
   staff: Array<any>;
   events: Array<any>;
+  displayedColumns: string[] = ['name', 'eventDate', 'eventUrl'];
 
   ngOnInit() {
     let admins
@@ -88,12 +89,6 @@ export class AdminComponent implements OnInit {
   getAllEvents() {
     this.firebaseService.getAllEvents().then(results => {
       this.events = results;
-    });
-  }
-
-  deleteEvent(event) {
-    this.firebaseService.deleteEvent(event.payload.doc.id).then(res => {
-      this.getAllEvents();
     });
   }
 }

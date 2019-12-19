@@ -51,3 +51,11 @@ mat-grid-tile {
 .contactText {
   padding-bottom: 40px;
 }
+
+.navTile {
+  cursor: pointer;
+}
+
+.navTile:hover {
+  background: darken(lightblue, 15%);
+}

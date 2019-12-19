@@ -23,7 +23,8 @@ import { MatToolbarModule,
   MatSidenavModule,
   MatExpansionModule,
   MatStepperModule,
-  MatDialogModule} from '@angular/material';
+  MatDialogModule,
+  MatTableModule} from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -98,6 +99,7 @@ import { ChallengerTryoutFormComponent } from './challenger/challenger-tryout-fo
     MatExpansionModule,
     MatStepperModule,
     MatDialogModule,
+    MatTableModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

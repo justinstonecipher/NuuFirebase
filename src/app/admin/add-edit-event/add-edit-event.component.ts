@@ -39,6 +39,12 @@ export class AddEditEventComponent implements OnInit {
     }
   }
 
+  deleteEvent(event) {
+    this.firebaseService.deleteEvent(event.id).then(res => {
+      this.close();
+    });
+  }
+
   close(): void {
     this.dialogRef.close();
   }

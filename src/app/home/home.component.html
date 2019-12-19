@@ -67,12 +67,12 @@
   <div class="h2">Navigate Northern Utah United</div>
 
   <mat-grid-list cols="3" rowHeight="2:1">
-    <mat-grid-tile> Resources</mat-grid-tile>
-    <mat-grid-tile>Events</mat-grid-tile>
-    <mat-grid-tile>Leagues &amp; Programs</mat-grid-tile>
-    <mat-grid-tile>Recreation</mat-grid-tile>
-    <mat-grid-tile>Tournaments</mat-grid-tile>
-    <mat-grid-tile>About Us &amp; Affiliated Teams</mat-grid-tile>
+    <mat-grid-tile class="navTile" (click)="goToResources()"> Resources</mat-grid-tile>
+    <mat-grid-tile class="navTile" (click)="goToEvents()">Events</mat-grid-tile>
+    <mat-grid-tile class="navTile" (click)="goToPrograms()">Leagues &amp; Programs</mat-grid-tile>
+    <mat-grid-tile class="navTile" (click)="goToRecreation()">Recreation</mat-grid-tile>
+    <mat-grid-tile class="navTile" (click)="goToTournaments()">Tournaments</mat-grid-tile>
+    <mat-grid-tile class="navTile" (click)="goToAbout()">About Us &amp; Affiliated Teams</mat-grid-tile>
   </mat-grid-list>
 
   <div class="divider">
